@@ -8,15 +8,17 @@
 <h1>근태관리 List</h1>
 <table border="1">
 
-    <form th:action="@{/attendance/search}" method="get">
-        <label for="searchDate">날짜:</label>
-        <input type="date" id="searchDate" name="searchDate">
-        <button type="submit">조회</button>
+    <form th:action="@{/attendance/search(emp_num=${allAttendances[0].attendance_id})}" method="get">
+        <label for="emp_num">번호:</label>
+        <input type="text" id="emp_num" name="emp_num">
+        <button type="submit" onclick="location.href='list1';"> 조회 </button>
     </form>
+
 
     <thead>
     <tr>
         <th>ID</th>
+        <th>emp Num</th>
         <th>Date</th>
         <th>On Time</th>
         <th>Off Time</th>
@@ -24,22 +26,25 @@
         <th>Employee Name</th>
         <th>Grade Name</th>
         <th>Dept Name</th>
+        <!--<th>Action</th>-->
     </tr>
     </thead>
     <tbody>
-    <tr th:each="attendance : ${attendances}">
-        <td th:text="${attendance.attendanceId}"></td>
-        <td th:text="${attendance.attDate}"></td>
-        <td th:text="${attendance.attOntime}"></td>
-        <td th:text="${attendance.attOfftime}"></td>
-        <td th:text="${attendance.attStatus}"></td>
-        <td th:text="${attendance.empName}"></td>
-        <td th:text="${attendance.attGradeName}"></td>
-        <td th:text="${attendance.attDeptName}"></td>
+    <tr th:each="allAttendances : ${allAttendances}">
+        <td>
+            <a th:href="@{/attendance/edit(attendance_id=${allAttendances.attendance_id})}" th:text="${allAttendances.attendance_id}"></a>
+        </td>
+        <td th:text="${allAttendances.emp_num}"></td>
+        <td th:text="${allAttendances.att_date}"></td>
+        <td th:text="${allAttendances.att_ontime}"></td>
+        <td th:text="${allAttendances.att_offtime}"></td>
+        <td th:text="${allAttendances.att_status}"></td>
+        <td th:text="${allAttendances.emp_name}"></td>
+        <td th:text="${allAttendances.att_gradename}"></td>
+        <td th:text="${allAttendances.att_deptname}"></td>
     </tr>
     </tbody>
 </table>
-
 
 </body>
 </html>
