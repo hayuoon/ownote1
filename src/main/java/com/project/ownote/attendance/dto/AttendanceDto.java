@@ -21,7 +21,7 @@ public class AttendanceDto {
     @Id
     private Long attendance_id;
     private LocalDate att_date;
-    private Timestamp att_ontime;
+    private Time att_ontime;
     private Time att_offtime;
     private String att_status;
     private String emp_name;
@@ -31,7 +31,7 @@ public class AttendanceDto {
 
 
     public void recordAttendance(LocalTime onTime) {
-        att_ontime = Timestamp.valueOf(LocalDateTime.of(att_date, onTime));
+        att_ontime = Time.valueOf(onTime);
         att_status = "출근";
     }
 

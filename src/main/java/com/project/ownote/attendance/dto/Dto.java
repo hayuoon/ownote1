@@ -10,7 +10,7 @@ import java.security.PrivateKey;
 @ToString
 public class Dto {
     private Long attendance_id;
-    private  String att_ontime;
+    private String att_ontime;
     private String att_offtime;
     private String att_status;
 }

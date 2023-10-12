@@ -75,7 +75,7 @@ public class AttendanceController {
         System.out.println("3038403840385038503583" + timeString2);
 
         // 파싱할 시간 형식 정의
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
         // 문자열을 LocalTime으로 변환
         LocalTime localTime = LocalTime.parse(timeString, formatter);
         LocalTime localTime2 = LocalTime.parse(timeString2, formatter);
