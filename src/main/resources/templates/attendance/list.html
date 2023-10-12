@@ -26,11 +26,12 @@
         <th>Employee Name</th>
         <th>Grade Name</th>
         <th>Dept Name</th>
-        <!--<th>Action</th>-->
+        <th>Action</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="allAttendances : ${allAttendances}">
+
         <td>
             <a th:href="@{/attendance/edit(attendance_id=${allAttendances.attendance_id})}" th:text="${allAttendances.attendance_id}"></a>
         </td>
@@ -42,6 +43,10 @@
         <td th:text="${allAttendances.emp_name}"></td>
         <td th:text="${allAttendances.att_gradename}"></td>
         <td th:text="${allAttendances.att_deptname}"></td>
+        <td>
+            <button type="submit" th:attr="data-attendance-id=${allAttendances.attendance_id}" onclick="location.href='/attendance/delete/'+ this.getAttribute('data-attendance-id')">삭제</button>
+
+        </td>
     </tr>
     </tbody>
 </table>
