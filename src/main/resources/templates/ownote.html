@@ -32,13 +32,16 @@
           </ul>
         </li>
         <li>
-          <a th:href="@{#}">연차</a>
-          <ul>
-            <li><a th:href="@{#}">연차 신청 </a></li>
-            <li><a th:href="@{#}">연차 확인</a></li>
-            <li><a th:href="@{#}">연차 승인</a></li>
-            <li><a th:href="@{#}">연차 수량</a></li>
-          </ul>
+            <a th:href="@{#}">연차</a>
+            <ul>
+                <li><a th:href="@{/annual/write}">연차 신청 </a></li>
+                <li><a href="/annual/anndata">연차 확인</a></li>
+                <li th:if="${grade_num >= 3}">
+                    <a th:href="@{annual/list}">연차 승인</a>
+
+                </li>
+                <li><a th:href="@{#}">연차 수정 신청</a></li>
+            </ul>
         </li>
         <li>
           <a th:href="@{#}">게시판</a>
