@@ -45,21 +45,27 @@ public class AttendanceController {
 
 
     @GetMapping("/list1")
-    public String listAllAttendances(Model model) {
+    public String listAllAttendances(Model model,HttpSession session) {
         List<Attendance> allAttendances = attendanceService.getAllAttendances();
+
         model.addAttribute("allAttendances", allAttendances);
 
-
+        AuthInfo authInfo = (AuthInfo) session.getAttribute("authInfo");
+        model.addAttribute("authInfo", authInfo);
         return "attendance/list";
     }
 
     @GetMapping("/edit")
-    public String edit(Model model, @RequestParam Long attendance_id) {
+    public String edit(Model model, @RequestParam Long attendance_id,HttpSession session) {
         Attendance attendance =  attendanceService.getAttendanceById(attendance_id);
         System.out.println("컨트롤러");
         System.out.println(attendance);
 //        List<Attendance> allAttendances = attendanceService.getAllAttendances();
        model.addAttribute("allAttendances", attendanceService.getAttendanceById(attendance_id));
+
+
+        AuthInfo authInfo = (AuthInfo) session.getAttribute("authInfo");
+        model.addAttribute("authInfo", authInfo);
         return "attendance/edit";
     }
 
@@ -67,7 +73,7 @@ public class AttendanceController {
 
 
     @PostMapping("/update")
-    public String update1(@ModelAttribute Dto dto) {
+    public String update1(@ModelAttribute Dto dto,HttpSession session,Model model) {
         // 입력 문자열
         String timeString = dto.getAtt_offtime();
         String timeString2 = dto.getAtt_ontime();
@@ -93,6 +99,9 @@ public class AttendanceController {
         attendanceService.updateAttendance(attendance);
 
 //        }
+
+        AuthInfo authInfo = (AuthInfo) session.getAttribute("authInfo");
+        model.addAttribute("authInfo", authInfo);
         return "redirect:/attendance/list1";
     }
 
@@ -101,8 +110,10 @@ public class AttendanceController {
 
 
     @GetMapping("/record")
-    public String recordAttendancePage(Model model) {
+    public String recordAttendancePage(Model model,HttpSession session) {
         model.addAttribute("attendance", new Attendance());
+        AuthInfo authInfo = (AuthInfo) session.getAttribute("authInfo");
+        model.addAttribute("authInfo", authInfo);
         return "attendance/attendance";
     }
 
@@ -115,6 +126,7 @@ public class AttendanceController {
         attendanceService.saveAttendance(attendance);
         System.out.println("----------------------------"+currentDate);
         System.out.println("----------------------------"+currentTime);
+
 
         return "redirect:/ownote";
 
@@ -147,16 +159,20 @@ public class AttendanceController {
 
 
     @GetMapping("/search")
-    public  String search(Model model, @RequestParam Long emp_num){
+    public  String search(Model model, @RequestParam Long emp_num,HttpSession session){
         List<Attendance> list = attendanceService.findByEmpNum(emp_num);
         model.addAttribute("allAttendances", list);
+        AuthInfo authInfo = (AuthInfo) session.getAttribute("authInfo");
+        model.addAttribute("authInfo", authInfo);
         return "attendance/list";
     }
 
 
     @GetMapping("/delete/{attendance_id}")
-    public String delete(@PathVariable Long attendance_id) {
+    public String delete(@PathVariable Long attendance_id,HttpSession session,Model model) {
         attendanceService.deleteById(attendance_id);
+        AuthInfo authInfo = (AuthInfo) session.getAttribute("authInfo");
+        model.addAttribute("authInfo", authInfo);
         return "redirect:/attendance/list1";
     }
 

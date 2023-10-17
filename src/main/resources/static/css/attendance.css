@@ -57,7 +57,8 @@ a {
 }
 
 table {
-    width: 100%;
+    width: 80%;
+    margin: 0 auto; /* 가운데 정렬 */
 }
 
 th, td {
@@ -89,4 +90,34 @@ tfoot {
 
 tbody tr:hover {
     background-color: #61adf6; /* 호버(마우스를 올렸을 때) 상태 배경색 설정 */
+}
+
+/* 폼 요소 스타일링 */
+form {
+    text-align: center;
+
+}
+
+/* 라벨 스타일링 */
+label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+/* 입력 필드 스타일링 */
+input[type="text"] {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    width: 200px;
+}
+
+/* 버튼 스타일링 */
+button[type="submit"] {
+    background-color: #007BFF;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
 }

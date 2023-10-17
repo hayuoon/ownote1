@@ -1,16 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+<th:block th:replace="~{/layout/layout :: setContent(~{this::content})}">
+    <th:block th:fragment="content">
 
 <head>
     <meta charset="UTF-8">
     <title>출근 및 퇴근 </title>
+    <link rel="stylesheet" href="/css/attendancebutton.css" th:href="@{/css/attendancebutton.css}">
 
 </head>
 <body>
-<h1>출근 및 퇴근 </h1>
 
 
-<button id="recordAttendance"><a th:href="@{/attendance/record/go}">출근</a></button>
+
+<div class="button-container">
+    <button id="recordAttendance"><a th:href="@{/attendance/record/go}">출근</a></button>
+    <button id="recordAttendance2"><a th:href="@{/attendance/record/leave}">퇴근</a></button>
+</div>
+
 
 <script>
     const recordAttendanceButton = document.getElementById("recordAttendance");
@@ -23,7 +30,7 @@
 
 
 
-<button id="recordAttendance2"><a th:href="@{/attendance/record/leave}">퇴근</a></button>
+<button id="recordAttendance3"><a th:href="@{/attendance/record/leave}">퇴근</a></button>
 
 <script>
     const recordAttendanceButton2 = document.getElementById("recordAttendance2");
@@ -44,5 +51,6 @@
 
 </script>
 </body>
-
+    </th:block>
+</th:block>
 </html>

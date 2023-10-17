@@ -10,14 +10,28 @@
     <link rel="stylesheet" href="/css/attendancetable.css" th:href="@{/css/attendancetable.css}">
 </head>
 <body>
-<h1>근태관리 List</h1>
+<form th:action="@{/attendance/search(emp_num=${allAttendances[0].attendance_id})}" method="get">
+    <tr>
+        <td>
+            <label for="emp_num">번호:</label>
+        </td>
+        <td>
+            <input type="text" id="emp_num" name="emp_num">
+        </td>
+        <td>
+            <button type="submit" onclick="location.href='list1';">조회</button>
+        </td>
+    </tr>
+</form>
+<!--<div th:if="${#authorization.expression('hasRole('''')')}">-->
 <table>
 
-    <form th:action="@{/attendance/search(emp_num=${allAttendances[0].attendance_id})}" method="get">
+   <!-- <form th:action="@{/attendance/search(emp_num=${allAttendances[0].attendance_id})}" method="get">
         <label for="emp_num">번호:</label>
         <input type="text" id="emp_num" name="emp_num">
         <button type="submit" onclick="location.href='list1';"> 조회 </button>
-    </form>
+    </form>-->
+
 
 
     <thead>
