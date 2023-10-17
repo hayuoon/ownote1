@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+<th:block th:replace="~{/layout/layout :: setContent(~{this::content})}">
+    <th:block th:fragment="content">
 <head>
     <meta charset="UTF-8">
     <title>출근 및 퇴근 </title>
+    <link rel="stylesheet" href="/css/club.css" th:href="@{/css/club.css}">
+    <link rel="stylesheet" href="/css/style.css" th:href="@{/css/style.css}">
+    <link rel="stylesheet" href="/css/table.css" th:href="@{/css/table.css}">
 </head>
 <body>
 <h1>출근 및 퇴근 </h1>
@@ -42,4 +47,6 @@
 
 </script>
 </body>
+    </th:block>
+</th:block>
 </html>

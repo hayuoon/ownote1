@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
-        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.project.ownote.emp.EmpMapper">
     <insert id="insertEmp" parameterType="com.project.ownote.emp.signUp.dto.SignUpDto">
@@ -11,6 +11,7 @@
         INSERT INTO EMP (emp_num, emp_password, emp_name, emp_birth, emp_email, emp_phone, emp_date, grade_num, dept_num)
         VALUES (#{emp_num}, #{emp_password}, #{emp_name}, #{emp_birth}, #{emp_email}, #{emp_phone}, now()
         ,#{grade_num}, #{dept_num})
+
     </insert>
     <select id="checkEmail" resultType="boolean">
         SELECT COUNT(*) > 0
@@ -27,8 +28,8 @@
         SELECT e.emp_name as emp_name, e.emp_email as emp_email, d.dept_name as dept_name, g.grade_name as grade_name
         FROM emp e, dept d, grade g
         WHERE e.dept_num = d.dept_num
-          AND e.grade_num = g.grade_num
-            LIMIT #{startRow}, #{size}
+        AND e.grade_num = g.grade_num
+        LIMIT #{startRow}, #{size}
     </select>
     <select id="deptAdressListPage" resultType="com.project.ownote.emp.adress.dto.DeptAdressDto">
         SELECT e.emp_name as emp_name, e.emp_email as emp_email, e.dept_num as dept_num, d.dept_name as dept_name, g.grade_name as grade_name
@@ -36,7 +37,7 @@
         WHERE e.dept_num = #{dept_num}
           AND e.dept_num = d.dept_num
           AND e.grade_num = g.grade_num
-            LIMIT #{startRow}, #{size}
+          LIMIT #{startRow}, #{size}
     </select>
     <select id="selectByEmail" resultType="com.project.ownote.emp.login.dto.Emp">
         select * from emp where emp_email = #{emp_email}
@@ -47,8 +48,8 @@
                e.grade_num as grade_num, g.grade_name as grade_name, d.dept_name as dept_name
         from emp e, dept d, grade g
         where emp_email = #{emp_email}
-          AND e.dept_num = d.dept_num
-          AND e.grade_num = g.grade_num
+        AND e.dept_num = d.dept_num
+        AND e.grade_num = g.grade_num
     </select>
     <update id="changeEmpPhone">
         UPDATE EMP SET emp_phone = #{emp_phone}, emp_password = #{emp_password}
@@ -65,10 +66,13 @@
     <select id="loginByEmail" resultType="com.project.ownote.emp.login.dto.LoginDto">
         select * from emp where emp_email = #{emp_email}
     </select>
+
     <select id="deptByNum" resultType="String">
         select dept_name from dept where dept_num = #{dept_num}
     </select>
+
     <select id="gradeByNum" resultType="String">
         select grade_name from grade where grade_num = #{grade_num}
     </select>
+
 </mapper>

@@ -6,8 +6,10 @@
 html{
     font-size: 15px;
 }
-
-
+h1 {
+  font-family: 'Malgun Gothic', sans-serif !important; /* "!important" 키워드를 사용하여 덮어쓰기 */
+  font-size: 24px !important;
+}
 body, ul, li {
     margin: 0;
     padding: 0;
@@ -19,6 +21,12 @@ body, ul, li {
   align-items: center;
   background-color: #61adf6;
   padding: 30px 15px;
+}
+#nav2.h1_css {
+  font-size: 3rem;
+}
+#nav2.strong {
+  font-size: 3rem;
 }
 
 .navbar-menu {
@@ -39,7 +47,6 @@ body, ul, li {
   }
 
   body {
-    height: 5000px;
     /*background-color: #f6ede8;*/
     background-color: #fafaf4;
   }
@@ -50,6 +57,7 @@ body, ul, li {
   }
 
   .side-bar {
+    z-index: 1; /* 사이드 바의 층위를 조절합니다. */
     position: fixed;    
     background-color: #61adf6;
     width: var(--side-bar-width);
