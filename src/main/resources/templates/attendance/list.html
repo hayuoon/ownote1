@@ -10,7 +10,13 @@
     <link rel="stylesheet" href="/css/attendancetable.css" th:href="@{/css/attendancetable.css}">
 </head>
 <body>
-<form th:action="@{/attendance/search(emp_num=${allAttendances[0].attendance_id})}" method="get">
+<div th:if="${nullAlert != null}">
+<script>
+        alert("기록이 존재하지 않습니다.");
+</script>
+</div>
+
+<form th:if="${nullAlert == null}" th:action="@{/attendance/search(emp_num=${allAttendances[0].attendance_id})}" method="get">
     <tr>
         <td>
             <label for="emp_num">번호:</label>
@@ -49,6 +55,9 @@
     </tr>
     </thead>
     <tbody>
+
+
+
     <tr th:each="allAttendances : ${allAttendances}">
 
         <td>
@@ -67,6 +76,7 @@
 
         </td>
     </tr>
+
     </tbody>
 </table>
 

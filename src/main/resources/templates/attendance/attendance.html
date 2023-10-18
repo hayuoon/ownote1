@@ -10,8 +10,20 @@
 
 </head>
 <body>
+<div th:if="${alertMessage != null}" class="alert alert-warning">
+    <script>
+        alert("이미 출근기록이 존재합니다.");
+        window.location.href = "/";
+    </script>
 
+</div>
 
+<div th:if="${alertMessage2 != null}" class="alert alert-warning">
+    <script>
+        alert("이미 퇴근기록이 존재합니다.");
+        window.location.href = "/";
+    </script>
+</div>
 
 <div class="button-container">
     <button id="recordAttendance"><a th:href="@{/attendance/record/go}">출근</a></button>
@@ -24,7 +36,10 @@
 
     recordAttendanceButton.addEventListener("click", () => {
         const currentTime1 = new Date().toLocaleString();
+
         alert("출근 시간: " + currentTime1);
+
+
     });
 </script>
 
